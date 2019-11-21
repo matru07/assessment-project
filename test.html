@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+<div class="jumbotron" style="  background: linear-gradient(to right, #cc66ff 0%, #ffff66 100%)" >
+<center>
+   <div class="form-group w-50">
+  <h1 style="font-family:broadway;"><center>Name</center></h1>
+<br>
+<br>
+  <input type="text" class="form-control" id="query" placeholder="Enter name">
+</div>
+<br><br>
+    <button id="button" class="btn btn-success btn-lg ">Click</button>
+    <div id="result">
+    </div>
+</center>
+</div>
+   
+</body>
+<script>
+    $("#button").click(
+       
+        () => {
+            var q = $("#query").val();
+            var url = `https://allsportsapi.com/api/football/?met=Players&playerName=${q}&APIkey=0c2d9932c80cfa9440d5da27b5c0efb3fd7607eef303a1a0e3cf390cf262b89e`;
+            var result;
+            $.ajax(url).done(function (response) {
+            console.log(response);
+           
+            for(let i =0 ; i < response.result.length;i++){
+                $("#result").append(
+            ` Name:  ${response.result[i].player_name} <br>
+               Jersy Number = ${response.result[i].player_number} <br>
+           
+                Country :  ${response.result[i].player_country}
+                <br>
+                Position : ${response.result[i].player_type}
+                <br>
+        <hr>        
+       `
+            )
+            }
+        }
+        
+    )});
+  
+  
+</script>
+
+</html>

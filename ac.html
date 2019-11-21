@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<body style=" background: linear-gradient(to right,  #66ffcc  0%,  #ff99cc 100%);">
+        <div id="result">
+            </div>
+<script>
+var q = $("#query").val();
+        var url = ` https://allsportsapi.com/api/football/?met=Leagues&APIkey=c3c5e47a711616a60dc5f1ba1d3b6af350157fa7d0beceae17f07965d0394f74`;
+        var result;
+        $.ajax(url).done(function (response) {
+        console.log(response);
+       
+        for(let i =0 ; i < response.result.length;i++){
+            $("#result").append(
+                `<p> League: ${response.result[i].league_name} <br></p>
+             <p>   Country: ${response.result[i].country_name}<br> </p>
+           
+              
+                <br>
+                <hr>
+                <br>
+       `
+       
+        
+              )  }
+    }
+    
+);
+</script>
+</body>
+</html>
