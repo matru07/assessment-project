@@ -2,9 +2,19 @@
 <html lang="en">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+        .card {
+         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+         transition: 0.3s;
+        width: 40%;
+        padding: 2px 16px;
+        
+       }
+       </style>
 <body style=" background: linear-gradient(to right,  #66ffcc  0%,  #ff99cc 100%);">
-        <div id="result">
-            </div>
+        <center><h3>Upcoming Fixtures....</h3></center>
+       <center> <div id="result">
+            </div></center>
 <script>
 var q = $("#query").val();
         var url = `https://allsportsapi.com/api/football/?met=Fixtures&APIkey=c3c5e47a711616a60dc5f1ba1d3b6af350157fa7d0beceae17f07965d0394f74&from=2019-11-24&to=2019-12-30`;
@@ -14,17 +24,20 @@ var q = $("#query").val();
        
         for(let i =0 ; i < response.result.length;i++){
             $("#result").append(
-                `<p> Date: ${response.result[i].event_date} <br></p>
-             <p>   Time: ${response.result[i].event_time}<br> </p>
-           Home team: ${response.result[i].event_home_team}<br>
-          <br> Away team: ${response.result[i].event_away_team}<br>
-           <br>Country :  ${response.result[i].country_name}<br>
+                `
+                <div class="card">
+                <p> <b>Date: </b> ${response.result[i].event_date} <br></p>
+             <p>   <b>Time: </b> ${response.result[i].event_time}<br> </p>
+          <b> Home team: </b> ${response.result[i].event_home_team}<br>
+          <br> <b> Away team: </b> ${response.result[i].event_away_team}<br>
+           <br><b>Country : </b>  ${response.result[i].country_name}<br>
                <br>
-               League : ${response.result[i].league_name}<br>
+              <b> League : </b> ${response.result[i].league_name}<br>
               
                 <br>
-                <hr>
+            
                 <br>
+                </div>
        `
        
         

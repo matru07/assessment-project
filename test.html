@@ -9,7 +9,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<style>
+        .card {
+         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+         transition: 0.3s;
+        width: 40%;
+        padding: 2px 16px;
+        background: linear-gradient(to right, #cc66ff 0%, #ffff66 100%);
+        border-radius:15px;
+        border : 2px solid white;
+        
+       }
+       </style>
 
 </head>
 
@@ -24,6 +35,8 @@
 </div>
 <br><br>
     <button id="button" class="btn btn-success btn-lg ">Click</button>
+    <br>
+    <br>
     <div id="result">
     </div>
 </center>
@@ -42,14 +55,17 @@
            
             for(let i =0 ; i < response.result.length;i++){
                 $("#result").append(
-            ` Name:  ${response.result[i].player_name} <br>
-               Jersy Number = ${response.result[i].player_number} <br>
+            `
+            <div class="card" > 
+            <br>
+           <b> Name:  ${response.result[i].player_name} </b> <br>
+               <b>Jersy Number = ${response.result[i].player_number}</b> <br>
            
-                Country :  ${response.result[i].player_country}
+              <b>  Country :  ${response.result[i].player_country}</b>
                 <br>
-                Position : ${response.result[i].player_type}
+              <b>  Position : ${response.result[i].player_type}</b>
                 <br>
-        <hr>        
+        </div>     
        `
             )
             }
